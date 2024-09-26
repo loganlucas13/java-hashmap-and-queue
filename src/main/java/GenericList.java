@@ -8,6 +8,12 @@ public abstract class GenericList<T> implements Iterable<T> {
         T data;
         int code; // optional field
         Node<T> next;
+
+        // constructor
+        public Node(T data) {
+            this.data = data;
+            this.next = null;
+        }
     }
 
     // data members
