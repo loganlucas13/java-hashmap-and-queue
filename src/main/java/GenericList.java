@@ -125,4 +125,9 @@ public abstract class GenericList<T> implements Iterable<T> {
         // TODO: implement after finishing 'ReverseGLLIterator.java'
         return null;
     }
+
+    // abstract method from Iterable<T>
+    public Iterator<T> iterator() {
+        return null;
+    }
 }
