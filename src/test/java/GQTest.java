@@ -8,17 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 public class GQTest {
 
-    /*
-    types to test:
-        1. Byte
-        2. Short
-        3. Integer
-        4. Long
-        5. Float
-        6. Double
-        7. Character
-        8. Boolean
-    */
+    // constructor testing
 
     @Test
     void queueConstructorTestInteger() {
@@ -28,7 +18,7 @@ public class GQTest {
         // System.out.print("Head: " + intQueue.getHead().data + "\n");
 
         assert(intQueue.getHead().data == number);
-        assert(intQueue.getHead() == intQueue.tail);
+        assert(intQueue.getHead() == intQueue.getTail());
         assert(intQueue.getLength() == 1);
     }
 
@@ -40,7 +30,7 @@ public class GQTest {
         // System.out.print("Head: " + longQueue.getHead().data + "\n");
 
         assert(longQueue.getHead().data == number);
-        assert(longQueue.getHead() == longQueue.tail);
+        assert(longQueue.getHead() == longQueue.getTail());
         assert(longQueue.getLength() == 1);
     }
 
@@ -52,7 +42,7 @@ public class GQTest {
         // System.out.print("Head: " + floatQueue.getHead().data + "\n");
 
         assert(floatQueue.getHead().data == number);
-        assert(floatQueue.getHead() == floatQueue.tail);
+        assert(floatQueue.getHead() == floatQueue.getTail());
         assert(floatQueue.getLength() == 1);
     }
 
@@ -64,7 +54,112 @@ public class GQTest {
         // System.out.print("Head: " + stringQueue.getHead().data + "\n");
 
         assert(stringQueue.getHead().data == data);
-        assert(stringQueue.getHead() == stringQueue.tail);
+        assert(stringQueue.getHead() == stringQueue.getTail());
         assert(stringQueue.getLength() == 1);
+    }
+
+
+    // method testing
+
+    @Test
+    void addNoCodeTest1() {
+        Integer number = 0;
+        Integer numberToAdd = 6;
+        GenericQueue<Integer> intQueue = new GenericQueue<>(number);
+
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getLength() == 1);
+
+        intQueue.add(numberToAdd);
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getTail().data == numberToAdd);
+        assert(intQueue.getLength() == 2);
+    }
+
+    @Test
+    void addNoCodeTest2() {
+        Integer number = 50;
+        GenericQueue<Integer> intQueue = new GenericQueue<>(number);
+
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getLength() == 1);
+
+        // starting from 1 so getLength only needs to be incremented by 1
+        for (int i = 1; i <= 25; i++) {
+            intQueue.add(i);
+            assert(intQueue.getHead().data == number);
+            assert(intQueue.getTail().data == i);
+            assert(intQueue.getLength() == i+1);
+        }
+    }
+
+    @Test
+    void addNoCodeTest3() {
+        String data = "head here!";
+        String dataToAdd = "added data here!";
+        GenericQueue<String> stringQueue = new GenericQueue<>(data);
+
+        assert(stringQueue.getHead().data == data);
+        assert(stringQueue.getLength() == 1);
+
+        stringQueue.add(dataToAdd);
+        assert(stringQueue.getHead().data == data);
+        assert(stringQueue.getTail().data == dataToAdd);
+        assert(stringQueue.getLength() == 2);
+    }
+
+
+    @Test
+    void addCodeTest1() {
+        Integer number = 7;
+        Integer numberToAdd = 12;
+        int codeToAdd = 2;
+
+        GenericQueue<Integer> intQueue = new GenericQueue<>(number);
+
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getLength() == 1);
+
+        intQueue.add(numberToAdd, codeToAdd);
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getTail().data == numberToAdd);
+        assert(intQueue.getTail().code == codeToAdd);
+        assert(intQueue.getLength() == 2);
+    }
+
+    @Test
+    void addCodeTest2() {
+        Integer number = 0;
+
+        GenericQueue<Integer> intQueue = new GenericQueue<>(number);
+
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getLength() == 1);
+
+        for (int i = 1; i <= 50; i++) {
+            intQueue.add(i, i+1); // data: i | code: i+1
+            assert(intQueue.getHead().data == number);
+            assert(intQueue.getTail().data == i);
+            assert(intQueue.getTail().code == i+1);
+            assert(intQueue.getLength() == i+1);
+        }
+    }
+
+    @Test
+    void addCodeTest3() {
+        String data = "head here!";
+        String dataToAdd = "new data here!";
+        int codeToAdd = 1;
+
+        GenericQueue<String> stringQueue = new GenericQueue<>(data);
+
+        assert(stringQueue.getHead().data == data);
+        assert(stringQueue.getLength() == 1);
+
+        stringQueue.add(dataToAdd, codeToAdd);
+        assert(stringQueue.getHead().data == data);
+        assert(stringQueue.getTail().data == dataToAdd);
+        assert(stringQueue.getTail().code == codeToAdd);
+        assert(stringQueue.getLength() == 2);
     }
 }

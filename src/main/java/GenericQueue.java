@@ -1,7 +1,7 @@
 public class GenericQueue<T> extends GenericList<T> {
 
     // data member
-    Node<T> tail;
+    private Node<T> tail;
 
     // constructor
     public GenericQueue(T data) {
@@ -11,6 +11,13 @@ public class GenericQueue<T> extends GenericList<T> {
         this.tail = initialNode;
     }
 
+
+    // getter
+
+    // returns 'tail' data member
+    public Node<T> getTail() {
+        return this.tail;
+    }
 
     // methods
 
