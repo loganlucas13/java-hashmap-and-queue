@@ -108,6 +108,32 @@ public class GQTest {
         assert(stringQueue.getLength() == 2);
     }
 
+    @Test
+    void addNoCodeTest4() {
+        // tests adding to an empty list
+        Integer number = 4;
+        Integer numberTwo = 5;
+        GenericQueue<Integer> intQueue = new GenericQueue<>(number);
+
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getLength() == 1);
+
+        intQueue.delete(); // delete() is assumed to function correctly; unit tests for delete() are found below
+        assert(intQueue.getHead() == null);
+        assert(intQueue.getTail() == null);
+        assert(intQueue.getLength() == 0);
+
+        intQueue.add(number);
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getTail().data == number);
+        assert(intQueue.getLength() == 1);
+
+        intQueue.add(numberTwo);
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getTail().data == numberTwo);
+        assert(intQueue.getLength() == 2);
+    }
+
 
     @Test
     void addCodeTest1() {

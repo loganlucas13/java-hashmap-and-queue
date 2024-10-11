@@ -30,9 +30,15 @@ public class GenericQueue<T> extends GenericList<T> {
 
     // adds a new node to the end of the list
     public void add(T data) {
-        Node<T> newTail = new Node<>(data);
-        this.getTail().next = newTail;
-        this.setTail(newTail);
+        Node<T> nodeToAdd = new Node<>(data);
+        if (this.getHead() == null) { // check if list is empty
+            this.setHead(nodeToAdd);
+            this.setTail(nodeToAdd);
+        }
+        else {
+            this.getTail().next = nodeToAdd;
+            this.setTail(nodeToAdd);
+        }
         this.setLength(this.getLength() + 1);
     }
     // same purpose as add(T data), but
