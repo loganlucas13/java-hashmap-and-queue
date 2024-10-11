@@ -7,61 +7,62 @@ public class GenericQueue<T> extends GenericList<T> {
     public GenericQueue(T data) {
         Node<T> initialNode = new Node<>(data);
         this.setHead(initialNode);
+        this.setTail(initialNode);
         this.setLength(1);
-        this.tail = initialNode;
     }
 
 
-    // getter
+    // getter and setter for tail
+    // meant to keep syntax for accessing data members consistent
 
     // returns 'tail' data member
     public Node<T> getTail() {
         return this.tail;
     }
 
+    // sets 'tail' data member
+    public void setTail(Node<T> tail) {
+        this.tail = tail;
+    }
+
+
     // methods
 
     // adds a new node to the end of the list
     public void add(T data) {
         Node<T> newTail = new Node<>(data);
-        this.tail.next = newTail;
-        this.tail = newTail;
+        this.getTail().next = newTail;
+        this.setTail(newTail);
         this.setLength(this.getLength() + 1);
     }
     // same purpose as add(T data), but
     // also sets code to data
     public void add(T data, int code) {
         this.add(data);
-        this.tail.code = code; // sets tail's code
+        this.getTail().code = code; // sets tail's code
     }
 
 
-    // deletes that last node in the list
+    // deletes that first node in the list
     // returns the value of the deleted node
     public T delete() {
         if (this.getLength() == 0) {
             return null; // empty list
         }
 
-        T data; // saves return value
-
-        // head == tail == node to delete
+        // if the tail is getting deleted, then it will be set to null
         if (this.getLength() == 1) {
-            data = this.getHead().data;
-            this.setHead(null);
-            this.tail = null;
-            this.setLength(0);
-            return data;
+            this.setTail(null);
         }
 
-        Node<T> currNode = this.getHead();
-        while (currNode.next != tail) {
-            currNode = currNode.next;
-        }
-        data = currNode.next.data;
-        currNode.next = null;
-        this.tail = currNode;
+        // deletes the head and decrements size by 1
+        Node<T> oldHead = this.getHead();
+        T data = oldHead.data; // saves return value
+        this.setHead(oldHead.next);
+        oldHead = null;
+
         this.setLength(this.getLength() - 1);
+
         return data;
     }
 

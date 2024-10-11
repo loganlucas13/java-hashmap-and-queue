@@ -162,4 +162,176 @@ public class GQTest {
         assert(stringQueue.getTail().code == codeToAdd);
         assert(stringQueue.getLength() == 2);
     }
+
+
+    @Test
+    void deleteTest1() {
+        // tests delete() with 1 node in the list
+        Integer number = 2;
+
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getTail().data == number);
+        assert(intQueue.getLength() == 1);
+
+        Integer returnVal = intQueue.delete();
+
+        assert(returnVal == number);
+        assert(intQueue.getHead() == null);
+        assert(intQueue.getTail() == null);
+        assert(intQueue.getLength() == 0);
+    }
+
+    @Test
+    void deleteTest2() {
+        // tests delete() with 2 nodes in the list
+        // also tries to delete when length == 0
+        Integer number = 7;
+        Integer numberTwo = 9;
+
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getTail().data == number);
+        assert(intQueue.getLength() == 1);
+
+        intQueue.add(numberTwo);
+
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getTail().data == numberTwo);
+        assert(intQueue.getLength() == 2);
+
+        // deletes first node
+        Integer returnVal = intQueue.delete();
+        assert(returnVal == number);
+        assert(intQueue.getHead().data == numberTwo);
+        assert(intQueue.getTail().data == numberTwo);
+        assert(intQueue.getLength() == 1);
+
+        // deletes second node
+        returnVal = intQueue.delete();
+        assert(returnVal == numberTwo);
+        assert(intQueue.getHead() == null);
+        assert(intQueue.getTail() == null);
+        assert(intQueue.getLength() == 0);
+
+        // attempts to delete a node that doesn't exist
+        returnVal = intQueue.delete();
+        assert(returnVal == null);
+    }
+
+    @Test
+    void deleteTest3() {
+        // tests delete using a loop
+        Integer number = 0;
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getTail().data == number);
+        assert(intQueue.getLength() == 1);
+
+
+        for (int i = 1; i <= 50; i++) {
+            intQueue.add(i);
+            assert(intQueue.getLength() == i+1);
+        }
+
+        int length = intQueue.getLength();
+        for (int i = 0; i <= 50; i++) {
+            Integer expectedVal = intQueue.getHead().data;
+            Integer returnVal = intQueue.delete();
+            assert(returnVal == expectedVal);
+            assert(intQueue.getLength() == length-1);
+            length--;
+        }
+    }
+
+    @Test
+    void deleteTest4() {
+        // tests delete() with a string
+        String data = "head here!";
+        GenericQueue<String> stringQueue = new GenericQueue<String>(data);
+
+        assert(stringQueue.getHead().data == "head here!");
+        assert(stringQueue.getTail().data == "head here!");
+        assert(stringQueue.getLength() == 1);
+
+        String returnVal = stringQueue.delete();
+
+        assert(returnVal == data);
+        assert(stringQueue.getHead() == null);
+        assert(stringQueue.getTail() == null);
+        assert(stringQueue.getLength() == 0);
+    }
+
+    @Test
+    void deleteTest5() {
+        // tests delete() with an empty list and a double
+        Double number = 1.5;
+        GenericQueue<Double> doubleQueue = new GenericQueue<Double>(number);
+
+        assert(doubleQueue.getHead().data == number);
+        assert(doubleQueue.getTail().data == number);
+        assert(doubleQueue.getLength() == 1);
+
+        Double returnVal = doubleQueue.delete();
+        assert(returnVal == number);
+        assert(doubleQueue.getHead() == null);
+        assert(doubleQueue.getTail() == null);
+        assert(doubleQueue.getLength() == 0);
+
+        returnVal = doubleQueue.delete();
+        assert(returnVal == null);
+        assert(doubleQueue.getHead() == null);
+        assert(doubleQueue.getTail() == null);
+        assert(doubleQueue.getLength() == 0);
+    }
+
+
+    @Test
+    void enqueueTest() {
+        // this function only calls add(), so not much extra testing is needed
+        Integer number = 8;
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getTail().data == number);
+        assert(intQueue.getLength() == 1);
+
+        for (int i = 1; i <= 25; i++) {
+            intQueue.enqueue(i);
+            assert(intQueue.getHead().data == number);
+            assert(intQueue.getTail().data == i);
+            assert(intQueue.getLength() == i+1);
+        }
+    }
+
+
+    @Test
+    void dequeueTest() {
+        // this function only calls delete(), so not much extra testing is needed
+        Integer number = 0;
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+
+        assert(intQueue.getHead().data == number);
+        assert(intQueue.getTail().data == number);
+        assert(intQueue.getLength() == 1);
+
+        for (int i = 1; i <= 50; i++) {
+            intQueue.enqueue(i);
+            assert(intQueue.getHead().data == number);
+            assert(intQueue.getTail().data == i);
+            assert(intQueue.getLength() == i+1);
+        }
+
+        int length = intQueue.getLength();
+        for (int i = 0; i <= 50; i++) {
+            Integer expectedVal = intQueue.getHead().data;
+            Integer returnVal = intQueue.dequeue();
+            assert(expectedVal == returnVal);
+            assert(intQueue.getLength() == length-1);
+            length--;
+        }
+    }
 }
