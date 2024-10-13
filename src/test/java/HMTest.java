@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Iterator;
 public class HMTest {
 
     // constructor testing
@@ -342,5 +344,111 @@ public class HMTest {
 
         assertEquals(expectedCode, hashCode);
         assertEquals(expectedValue, hashValue);
+    }
+
+
+    // iterator tests
+
+    @Test
+    void HMIteratorTest1() {
+        // tests 'hasNext' with 1 value in the list
+        String key = "key";
+        Integer value = 9;
+
+        MyHashMap<Integer> hashMap = new MyHashMap<Integer>(key, value);
+
+        assertTrue(hashMap.iterator().hasNext());
+    }
+
+    @Test
+    void HMIteratorTest2() {
+        // tests 'hasNext' with 3 values in the list
+        String key1 = "key";
+        String key2 = "another key";
+        String key3 = "another one";
+        Integer value = 4;
+
+        MyHashMap<Integer> hashMap = new MyHashMap<Integer>(key1, value);
+        hashMap.put(key2, value);
+        hashMap.put(key3, value);
+
+        assertTrue(hashMap.iterator().hasNext());
+    }
+
+    @Test
+    void HMIteratorTest3() {
+        // tests 'next' with 4 values in the list
+        // mix of different and same hash values (indices)
+        String key1 = "first key";
+        String key2 = "Cozmo";
+        String key3 = "mouse";
+        String key4 = "omzoC";
+        Integer value1 = 5;
+        Integer value2 = 10;
+        Integer value3 = 15;
+        Integer value4 = 20;
+
+        MyHashMap<Integer> hashMap = new MyHashMap<Integer>(key1, value1);
+        hashMap.put(key2, value2);
+        hashMap.put(key3, value3);
+        hashMap.put(key4, value4);
+
+        int index1 = hashMap.createHashValue(key1);
+        int index2 = hashMap.createHashValue(key2);
+        int index3 = hashMap.createHashValue(key3);
+        int index4 = hashMap.createHashValue(key4);
+
+        assertNotEquals(index1, index2);
+        assertNotEquals(index1, index3);
+        assertNotEquals(index2, index3);
+
+        assertEquals(index2, index4); // 'Cozmo' and 'omzoc'
+
+        assertEquals(hashMap.size(), 4);
+
+        Iterator<Integer> iterator = hashMap.iterator();
+
+        assertEquals(iterator.next(), 10); // key 2 (index 0)
+        assertEquals(iterator.next(), 20); // key 4 (index 0)
+        assertEquals(iterator.next(), 15); // key 3 (index 1)
+        assertEquals(iterator.next(), 5); // key 1 (index 9)
+        assertEquals(iterator.next(), null); // none left
+    }
+
+    @Test
+    void HMIteratorTest4() {
+        // all keys have the same hash value
+        // uses a foreach loop
+        String key1 = "hamster";
+        String key2 = "rooster";
+        String key3 = "Cozmo";
+        String key4 = "omzoC";
+        Integer value1 = 10;
+        Integer value2 = 15;
+        Integer value3 = 20;
+        Integer value4 = 25;
+
+        MyHashMap<Integer> hashMap = new MyHashMap<Integer>(key1, value1);
+
+        int index1 = hashMap.createHashValue(key1);
+        int index2 = hashMap.createHashValue(key2);
+        int index3 = hashMap.createHashValue(key3);
+        int index4 = hashMap.createHashValue(key4);
+
+        assertEquals(index1, index2);
+        assertEquals(index2, index3);
+        assertEquals(index3, index4);
+
+        hashMap.put(key2, value2);
+        hashMap.put(key3, value3);
+        hashMap.put(key4, value4);
+
+        assertEquals(hashMap.size(), 4);
+
+        Integer expectedValue = 10;
+        for (Integer value : hashMap) {
+            assertEquals(value, expectedValue);
+            expectedValue += 5;
+        }
     }
 }

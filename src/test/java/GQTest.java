@@ -8,6 +8,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
 public class GQTest {
 
     // constructor testing
@@ -19,9 +21,9 @@ public class GQTest {
 
         // System.out.print("Head: " + intQueue.getHead().data + "\n");
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getHead() == intQueue.getTail());
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getHead(), intQueue.getTail());
+        assertEquals(intQueue.getLength(), 1);
     }
 
     @Test
@@ -31,9 +33,9 @@ public class GQTest {
 
         // System.out.print("Head: " + longQueue.getHead().data + "\n");
 
-        assert(longQueue.getHead().data == number);
-        assert(longQueue.getHead() == longQueue.getTail());
-        assert(longQueue.getLength() == 1);
+        assertEquals(longQueue.getHead().data, number);
+        assertEquals(longQueue.getHead(), longQueue.getTail());
+        assertEquals(longQueue.getLength(), 1);
     }
 
     @Test
@@ -43,9 +45,9 @@ public class GQTest {
 
         // System.out.print("Head: " + floatQueue.getHead().data + "\n");
 
-        assert(floatQueue.getHead().data == number);
-        assert(floatQueue.getHead() == floatQueue.getTail());
-        assert(floatQueue.getLength() == 1);
+        assertEquals(floatQueue.getHead().data, number);
+        assertEquals(floatQueue.getHead(), floatQueue.getTail());
+        assertEquals(floatQueue.getLength(), 1);
     }
 
     @Test
@@ -55,9 +57,9 @@ public class GQTest {
 
         // System.out.print("Head: " + stringQueue.getHead().data + "\n");
 
-        assert(stringQueue.getHead().data == data);
-        assert(stringQueue.getHead() == stringQueue.getTail());
-        assert(stringQueue.getLength() == 1);
+        assertEquals(stringQueue.getHead().data, data);
+        assertEquals(stringQueue.getHead(), stringQueue.getTail());
+        assertEquals(stringQueue.getLength(), 1);
     }
 
 
@@ -67,10 +69,10 @@ public class GQTest {
         int code = 4;
         GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number, code);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getHead().code == code);
-        assert(intQueue.getHead() == intQueue.getTail());
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getHead().code, code);
+        assertEquals(intQueue.getHead(), intQueue.getTail());
+        assertEquals(intQueue.getLength(), 1);
     }
 
     @Test
@@ -79,10 +81,10 @@ public class GQTest {
         int code = 928;
         GenericQueue<Long> longQueue = new GenericQueue<Long>(number, code);
 
-        assert(longQueue.getHead().data == number);
-        assert(longQueue.getHead().code == code);
-        assert(longQueue.getHead() == longQueue.getTail());
-        assert(longQueue.getLength() == 1);
+        assertEquals(longQueue.getHead().data, number);
+        assertEquals(longQueue.getHead().code, code);
+        assertEquals(longQueue.getHead(), longQueue.getTail());
+        assertEquals(longQueue.getLength(), 1);
     }
 
     @Test
@@ -91,10 +93,10 @@ public class GQTest {
         int code = 1;
         GenericQueue<Float> floatQueue = new GenericQueue<Float>(number, code);
 
-        assert(floatQueue.getHead().data == number);
-        assert(floatQueue.getHead().code == code);
-        assert(floatQueue.getHead() == floatQueue.getTail());
-        assert(floatQueue.getLength() == 1);
+        assertEquals(floatQueue.getHead().data, number);
+        assertEquals(floatQueue.getHead().code, code);
+        assertEquals(floatQueue.getHead(), floatQueue.getTail());
+        assertEquals(floatQueue.getLength(), 1);
     }
 
     @Test
@@ -103,10 +105,10 @@ public class GQTest {
         int code = 101475;
         GenericQueue<String> stringQueue = new GenericQueue<String>(data, code);
 
-        assert(stringQueue.getHead().data == data);
-        assert(stringQueue.getHead().code == code);
-        assert(stringQueue.getHead() == stringQueue.getTail());
-        assert(stringQueue.getLength() == 1);
+        assertEquals(stringQueue.getHead().data, data);
+        assertEquals(stringQueue.getHead().code, code);
+        assertEquals(stringQueue.getHead(), stringQueue.getTail());
+        assertEquals(stringQueue.getLength(), 1);
     }
 
 
@@ -118,13 +120,13 @@ public class GQTest {
         Integer numberToAdd = 6;
         GenericQueue<Integer> intQueue = new GenericQueue<>(number);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getLength(), 1);
 
         intQueue.add(numberToAdd);
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getTail().data == numberToAdd);
-        assert(intQueue.getLength() == 2);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getTail().data, numberToAdd);
+        assertEquals(intQueue.getLength(), 2);
     }
 
     @Test
@@ -132,15 +134,15 @@ public class GQTest {
         Integer number = 50;
         GenericQueue<Integer> intQueue = new GenericQueue<>(number);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getLength(), 1);
 
         // starting from 1 so getLength only needs to be incremented by 1
         for (int i = 1; i <= 25; i++) {
             intQueue.add(i);
-            assert(intQueue.getHead().data == number);
-            assert(intQueue.getTail().data == i);
-            assert(intQueue.getLength() == i+1);
+            assertEquals(intQueue.getHead().data, number);
+            assertEquals(intQueue.getTail().data, i);
+            assertEquals(intQueue.getLength(), i+1);
         }
     }
 
@@ -150,13 +152,13 @@ public class GQTest {
         String dataToAdd = "added data here!";
         GenericQueue<String> stringQueue = new GenericQueue<>(data);
 
-        assert(stringQueue.getHead().data == data);
-        assert(stringQueue.getLength() == 1);
+        assertEquals(stringQueue.getHead().data, data);
+        assertEquals(stringQueue.getLength(), 1);
 
         stringQueue.add(dataToAdd);
-        assert(stringQueue.getHead().data == data);
-        assert(stringQueue.getTail().data == dataToAdd);
-        assert(stringQueue.getLength() == 2);
+        assertEquals(stringQueue.getHead().data, data);
+        assertEquals(stringQueue.getTail().data, dataToAdd);
+        assertEquals(stringQueue.getLength(), 2);
     }
 
     @Test
@@ -166,23 +168,23 @@ public class GQTest {
         Integer numberTwo = 5;
         GenericQueue<Integer> intQueue = new GenericQueue<>(number);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getLength(), 1);
 
         intQueue.delete(); // delete() is assumed to function correctly; unit tests for delete() are found below
-        assert(intQueue.getHead() == null);
-        assert(intQueue.getTail() == null);
-        assert(intQueue.getLength() == 0);
+        assertEquals(intQueue.getHead(), null);
+        assertEquals(intQueue.getTail(), null);
+        assertEquals(intQueue.getLength(), 0);
 
         intQueue.add(number);
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getTail().data == number);
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getTail().data, number);
+        assertEquals(intQueue.getLength(), 1);
 
         intQueue.add(numberTwo);
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getTail().data == numberTwo);
-        assert(intQueue.getLength() == 2);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getTail().data, numberTwo);
+        assertEquals(intQueue.getLength(), 2);
     }
 
 
@@ -194,14 +196,14 @@ public class GQTest {
 
         GenericQueue<Integer> intQueue = new GenericQueue<>(number);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getLength(), 1);
 
         intQueue.add(numberToAdd, codeToAdd);
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getTail().data == numberToAdd);
-        assert(intQueue.getTail().code == codeToAdd);
-        assert(intQueue.getLength() == 2);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getTail().data, numberToAdd);
+        assertEquals(intQueue.getTail().code, codeToAdd);
+        assertEquals(intQueue.getLength(), 2);
     }
 
     @Test
@@ -210,15 +212,15 @@ public class GQTest {
 
         GenericQueue<Integer> intQueue = new GenericQueue<>(number);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getLength(), 1);
 
         for (int i = 1; i <= 50; i++) {
             intQueue.add(i, i+1); // data: i | code: i+1
-            assert(intQueue.getHead().data == number);
-            assert(intQueue.getTail().data == i);
-            assert(intQueue.getTail().code == i+1);
-            assert(intQueue.getLength() == i+1);
+            assertEquals(intQueue.getHead().data, number);
+            assertEquals(intQueue.getTail().data, i);
+            assertEquals(intQueue.getTail().code, i+1);
+            assertEquals(intQueue.getLength(), i+1);
         }
     }
 
@@ -230,14 +232,14 @@ public class GQTest {
 
         GenericQueue<String> stringQueue = new GenericQueue<>(data);
 
-        assert(stringQueue.getHead().data == data);
-        assert(stringQueue.getLength() == 1);
+        assertEquals(stringQueue.getHead().data, data);
+        assertEquals(stringQueue.getLength(), 1);
 
         stringQueue.add(dataToAdd, codeToAdd);
-        assert(stringQueue.getHead().data == data);
-        assert(stringQueue.getTail().data == dataToAdd);
-        assert(stringQueue.getTail().code == codeToAdd);
-        assert(stringQueue.getLength() == 2);
+        assertEquals(stringQueue.getHead().data, data);
+        assertEquals(stringQueue.getTail().data, dataToAdd);
+        assertEquals(stringQueue.getTail().code, codeToAdd);
+        assertEquals(stringQueue.getLength(), 2);
     }
 
 
@@ -248,16 +250,16 @@ public class GQTest {
 
         GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getTail().data == number);
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getTail().data, number);
+        assertEquals(intQueue.getLength(), 1);
 
         Integer returnVal = intQueue.delete();
 
-        assert(returnVal == number);
-        assert(intQueue.getHead() == null);
-        assert(intQueue.getTail() == null);
-        assert(intQueue.getLength() == 0);
+        assertEquals(returnVal, number);
+        assertEquals(intQueue.getHead(), null);
+        assertEquals(intQueue.getTail(), null);
+        assertEquals(intQueue.getLength(), 0);
     }
 
     @Test
@@ -269,33 +271,33 @@ public class GQTest {
 
         GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getTail().data == number);
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getTail().data, number);
+        assertEquals(intQueue.getLength(), 1);
 
         intQueue.add(numberTwo);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getTail().data == numberTwo);
-        assert(intQueue.getLength() == 2);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getTail().data, numberTwo);
+        assertEquals(intQueue.getLength(), 2);
 
         // deletes first node
         Integer returnVal = intQueue.delete();
-        assert(returnVal == number);
-        assert(intQueue.getHead().data == numberTwo);
-        assert(intQueue.getTail().data == numberTwo);
-        assert(intQueue.getLength() == 1);
+        assertEquals(returnVal, number);
+        assertEquals(intQueue.getHead().data, numberTwo);
+        assertEquals(intQueue.getTail().data, numberTwo);
+        assertEquals(intQueue.getLength(), 1);
 
         // deletes second node
         returnVal = intQueue.delete();
-        assert(returnVal == numberTwo);
-        assert(intQueue.getHead() == null);
-        assert(intQueue.getTail() == null);
-        assert(intQueue.getLength() == 0);
+        assertEquals(returnVal, numberTwo);
+        assertEquals(intQueue.getHead(), null);
+        assertEquals(intQueue.getTail(), null);
+        assertEquals(intQueue.getLength(), 0);
 
         // attempts to delete a node that doesn't exist
         returnVal = intQueue.delete();
-        assert(returnVal == null);
+        assertEquals(returnVal, null);
     }
 
     @Test
@@ -304,22 +306,22 @@ public class GQTest {
         Integer number = 0;
         GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getTail().data == number);
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getTail().data, number);
+        assertEquals(intQueue.getLength(), 1);
 
 
         for (int i = 1; i <= 50; i++) {
             intQueue.add(i);
-            assert(intQueue.getLength() == i+1);
+            assertEquals(intQueue.getLength(), i+1);
         }
 
         int length = intQueue.getLength();
         for (int i = 0; i <= 50; i++) {
             Integer expectedVal = intQueue.getHead().data;
             Integer returnVal = intQueue.delete();
-            assert(returnVal == expectedVal);
-            assert(intQueue.getLength() == length-1);
+            assertEquals(returnVal, expectedVal);
+            assertEquals(intQueue.getLength(), length-1);
             length--;
         }
     }
@@ -330,16 +332,16 @@ public class GQTest {
         String data = "head here!";
         GenericQueue<String> stringQueue = new GenericQueue<String>(data);
 
-        assert(stringQueue.getHead().data == "head here!");
-        assert(stringQueue.getTail().data == "head here!");
-        assert(stringQueue.getLength() == 1);
+        assertEquals(stringQueue.getHead().data, "head here!");
+        assertEquals(stringQueue.getTail().data, "head here!");
+        assertEquals(stringQueue.getLength(), 1);
 
         String returnVal = stringQueue.delete();
 
-        assert(returnVal == data);
-        assert(stringQueue.getHead() == null);
-        assert(stringQueue.getTail() == null);
-        assert(stringQueue.getLength() == 0);
+        assertEquals(returnVal, data);
+        assertEquals(stringQueue.getHead(), null);
+        assertEquals(stringQueue.getTail(), null);
+        assertEquals(stringQueue.getLength(), 0);
     }
 
     @Test
@@ -348,21 +350,21 @@ public class GQTest {
         Double number = 1.5;
         GenericQueue<Double> doubleQueue = new GenericQueue<Double>(number);
 
-        assert(doubleQueue.getHead().data == number);
-        assert(doubleQueue.getTail().data == number);
-        assert(doubleQueue.getLength() == 1);
+        assertEquals(doubleQueue.getHead().data, number);
+        assertEquals(doubleQueue.getTail().data, number);
+        assertEquals(doubleQueue.getLength(), 1);
 
         Double returnVal = doubleQueue.delete();
-        assert(returnVal == number);
-        assert(doubleQueue.getHead() == null);
-        assert(doubleQueue.getTail() == null);
-        assert(doubleQueue.getLength() == 0);
+        assertEquals(returnVal, number);
+        assertEquals(doubleQueue.getHead(), null);
+        assertEquals(doubleQueue.getTail(), null);
+        assertEquals(doubleQueue.getLength(), 0);
 
         returnVal = doubleQueue.delete();
-        assert(returnVal == null);
-        assert(doubleQueue.getHead() == null);
-        assert(doubleQueue.getTail() == null);
-        assert(doubleQueue.getLength() == 0);
+        assertEquals(returnVal, null);
+        assertEquals(doubleQueue.getHead(), null);
+        assertEquals(doubleQueue.getTail(), null);
+        assertEquals(doubleQueue.getLength(), 0);
     }
 
 
@@ -372,15 +374,15 @@ public class GQTest {
         Integer number = 8;
         GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getTail().data == number);
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getTail().data, number);
+        assertEquals(intQueue.getLength(), 1);
 
         for (int i = 1; i <= 25; i++) {
             intQueue.enqueue(i);
-            assert(intQueue.getHead().data == number);
-            assert(intQueue.getTail().data == i);
-            assert(intQueue.getLength() == i+1);
+            assertEquals(intQueue.getHead().data, number);
+            assertEquals(intQueue.getTail().data, i);
+            assertEquals(intQueue.getLength(), i+1);
         }
     }
 
@@ -391,23 +393,23 @@ public class GQTest {
         Integer number = 0;
         GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
 
-        assert(intQueue.getHead().data == number);
-        assert(intQueue.getTail().data == number);
-        assert(intQueue.getLength() == 1);
+        assertEquals(intQueue.getHead().data, number);
+        assertEquals(intQueue.getTail().data, number);
+        assertEquals(intQueue.getLength(), 1);
 
         for (int i = 1; i <= 50; i++) {
             intQueue.enqueue(i);
-            assert(intQueue.getHead().data == number);
-            assert(intQueue.getTail().data == i);
-            assert(intQueue.getLength() == i+1);
+            assertEquals(intQueue.getHead().data, number);
+            assertEquals(intQueue.getTail().data, i);
+            assertEquals(intQueue.getLength(), i+1);
         }
 
         int length = intQueue.getLength();
         for (int i = 0; i <= 50; i++) {
             Integer expectedVal = intQueue.getHead().data;
             Integer returnVal = intQueue.dequeue();
-            assert(expectedVal == returnVal);
-            assert(intQueue.getLength() == length-1);
+            assertEquals(expectedVal, returnVal);
+            assertEquals(intQueue.getLength(), length-1);
             length--;
         }
     }
@@ -563,5 +565,124 @@ public class GQTest {
         }
 
         assertTrue(intQueue.dumpList().equals(expectedResult));
+    }
+
+
+    // iterator tests
+
+    @Test
+    void GLLIteratorTest1() {
+        // tests 'hasNext' with no next value
+        Integer number = 0;
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+        intQueue.delete();
+
+        Iterator<Integer> iterator = intQueue.iterator();
+
+        assertFalse(iterator.hasNext());
+    }
+
+    @Test
+    void GLLIteratorTest2() {
+        // tests 'hasNext' with a next value
+        Integer number = 0;
+        Integer numberTwo = 5;
+
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+        intQueue.add(numberTwo);
+
+        Iterator<Integer> iterator = intQueue.iterator();
+
+        assertTrue(iterator.hasNext());
+    }
+
+    @Test
+    void GLLIteratorTest3() {
+        // tests 'next' with a list of size 1
+        Integer number = 0;
+
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+        Iterator<Integer> iterator = intQueue.iterator();
+
+        Integer returnVal = iterator.next();
+
+        assertEquals(returnVal, number);
+
+        returnVal = iterator.next();
+
+        assertEquals(returnVal, null);
+    }
+
+    @Test
+    void GLLIteratorTest4() {
+        // tests with a for each loop
+        Integer number = 0;
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+
+        for (int i = 1; i < 50; i++) {
+            intQueue.add(i);
+        }
+
+        int expectedVal = 0;
+        for (Integer value : intQueue) {
+            assertEquals(expectedVal, value);
+            expectedVal++;
+        }
+    }
+
+
+    @Test
+    void ReverseGLLIteratorTest1() {
+        // tests 'hasNext' with no next value
+        Integer number = 0;
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+        intQueue.delete();
+
+        Iterator<Integer> iterator = intQueue.descendingIterator();
+
+        assertFalse(iterator.hasNext());
+    }
+
+    @Test
+    void ReverseGLLIteratorTest2() {
+        // tests 'hasNext' with a next value
+        Integer number = 0;
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+
+        Iterator<Integer> iterator = intQueue.descendingIterator();
+
+        assertTrue(iterator.hasNext());
+    }
+
+    @Test
+    void ReverseGLLIteratorTest3() {
+        // tests 'next' with a list of size 1
+        Integer number = 9;
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+
+        Iterator<Integer> iterator = intQueue.descendingIterator();
+
+        Integer returnVal = iterator.next();
+
+        assertEquals(number, returnVal);
+    }
+
+    @Test
+    void ReverseGLLIteratorTest4() {
+        // tests with a for each loop
+        Integer number = 0;
+        GenericQueue<Integer> intQueue = new GenericQueue<Integer>(number);
+
+        for (int i = 1; i < 50; i++) {
+            intQueue.add(i);
+        }
+
+        Iterator<Integer> iterator = intQueue.descendingIterator();
+
+        int expectedVal = 49;
+        while (iterator.hasNext()) {
+            assertEquals(iterator.next(), expectedVal);
+            expectedVal--;
+        }
     }
 }

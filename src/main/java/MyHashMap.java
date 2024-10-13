@@ -138,6 +138,6 @@ public class MyHashMap<T> implements Iterable<T> {
 
     // abstract method from Iterable<T>
     public Iterator<T> iterator() {
-        return null;
+        return new HMIterator<>(this.map);
     }
 }

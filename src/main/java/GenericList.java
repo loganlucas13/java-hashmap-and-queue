@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 public abstract class GenericList<T> implements Iterable<T> {
 
-    public class Node<T> {
+    // generic node class
+    // stores data in the list
+    public static class Node<T> {
         T data;
         int code; // optional field
         Node<T> next;
@@ -15,6 +17,7 @@ public abstract class GenericList<T> implements Iterable<T> {
             this.next = null;
         }
     }
+
 
     // data members
     private Node<T> head;
@@ -28,7 +31,6 @@ public abstract class GenericList<T> implements Iterable<T> {
         return this.length;
     }
 
-
     // sets 'length' data member
     public void setLength(int length) {
         this.length = length;
@@ -39,7 +41,6 @@ public abstract class GenericList<T> implements Iterable<T> {
     public Node<T> getHead() {
         return this.head;
     }
-
 
     // sets 'head' data member
     public void setHead(Node<T> head) {
@@ -101,6 +102,7 @@ public abstract class GenericList<T> implements Iterable<T> {
         return currNode.data;
     }
 
+
     // replaces the element at the specified index with the 'element' parameter
     // returns the element that was replaced OR null if index is out of bounds
     public T set(int index, T element) {
@@ -122,12 +124,12 @@ public abstract class GenericList<T> implements Iterable<T> {
 
     // returns an iterator from tail to head over the list
     public Iterator<T> descendingIterator() {
-        // TODO: implement after finishing 'ReverseGLLIterator.java'
-        return null;
+        return new ReverseGLLIterator<>(this.getHead());
     }
+
 
     // abstract method from Iterable<T>
     public Iterator<T> iterator() {
-        return null;
+        return new GLLIterator<>(this.getHead());
     }
 }

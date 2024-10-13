@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: HMTest
 -------------------------------------------------------------------------------
-Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s - in HMTest
+Tests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 s - in HMTest
