@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="GQTest" time="0.003" tests="31" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="HMTest" time="0.024" tests="19" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -58,35 +58,23 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="searchForCodeTest1" classname="GQTest" time="0"/>
-  <testcase name="searchForCodeTest2" classname="GQTest" time="0"/>
-  <testcase name="searchForCodeTest3" classname="GQTest" time="0"/>
-  <testcase name="replaceAtCodeTest1" classname="GQTest" time="0"/>
-  <testcase name="replaceAtCodeTest2" classname="GQTest" time="0"/>
-  <testcase name="replaceAtCodeTest3" classname="GQTest" time="0"/>
-  <testcase name="QueueCodeConstructorTestFloat" classname="GQTest" time="0.001"/>
-  <testcase name="queueCodeConstructorTestLong" classname="GQTest" time="0"/>
-  <testcase name="addCodeTest1" classname="GQTest" time="0"/>
-  <testcase name="addCodeTest2" classname="GQTest" time="0"/>
-  <testcase name="addCodeTest3" classname="GQTest" time="0"/>
-  <testcase name="deleteTest1" classname="GQTest" time="0"/>
-  <testcase name="deleteTest2" classname="GQTest" time="0"/>
-  <testcase name="deleteTest3" classname="GQTest" time="0"/>
-  <testcase name="deleteTest4" classname="GQTest" time="0"/>
-  <testcase name="deleteTest5" classname="GQTest" time="0"/>
-  <testcase name="queueConstructorTestLong" classname="GQTest" time="0"/>
-  <testcase name="printTest1" classname="GQTest" time="0"/>
-  <testcase name="printTest2" classname="GQTest" time="0"/>
-  <testcase name="queueConstructorTestString" classname="GQTest" time="0"/>
-  <testcase name="queueConstructorTestInteger" classname="GQTest" time="0"/>
-  <testcase name="dequeueTest" classname="GQTest" time="0"/>
-  <testcase name="dumpListTest1" classname="GQTest" time="0"/>
-  <testcase name="addNoCodeTest1" classname="GQTest" time="0"/>
-  <testcase name="addNoCodeTest2" classname="GQTest" time="0"/>
-  <testcase name="addNoCodeTest3" classname="GQTest" time="0"/>
-  <testcase name="addNoCodeTest4" classname="GQTest" time="0"/>
-  <testcase name="enqueueTest" classname="GQTest" time="0"/>
-  <testcase name="QueueCodeConstructorTestString" classname="GQTest" time="0"/>
-  <testcase name="queueCodeConstructorTestInteger" classname="GQTest" time="0"/>
-  <testcase name="queueConstructorTestFloat" classname="GQTest" time="0"/>
+  <testcase name="getAndSetLengthTest" classname="HMTest" time="0.009"/>
+  <testcase name="containsTest1" classname="HMTest" time="0"/>
+  <testcase name="containsTest2" classname="HMTest" time="0"/>
+  <testcase name="containsTest3" classname="HMTest" time="0"/>
+  <testcase name="hashMapConstructorTestInteger" classname="HMTest" time="0"/>
+  <testcase name="hashMapConstructorTestFloat" classname="HMTest" time="0"/>
+  <testcase name="isEmptyTest" classname="HMTest" time="0"/>
+  <testcase name="replaceTest1" classname="HMTest" time="0.001"/>
+  <testcase name="replaceTest2" classname="HMTest" time="0"/>
+  <testcase name="sizeTest1" classname="HMTest" time="0.001"/>
+  <testcase name="sizeTest2" classname="HMTest" time="0"/>
+  <testcase name="createHashCodeAndValueTest" classname="HMTest" time="0.001"/>
+  <testcase name="hashMapConstructorTestString" classname="HMTest" time="0"/>
+  <testcase name="hashMapConstructorTestLong" classname="HMTest" time="0"/>
+  <testcase name="putTest1" classname="HMTest" time="0"/>
+  <testcase name="putTest2" classname="HMTest" time="0"/>
+  <testcase name="putTest3" classname="HMTest" time="0.001"/>
+  <testcase name="getTest1" classname="HMTest" time="0"/>
+  <testcase name="getTest2" classname="HMTest" time="0"/>
 </testsuite>

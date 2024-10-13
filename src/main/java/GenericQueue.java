@@ -3,9 +3,21 @@ public class GenericQueue<T> extends GenericList<T> {
     // data member
     private Node<T> tail;
 
-    // constructor
+    // constructors
+
+    // only data
     public GenericQueue(T data) {
         Node<T> initialNode = new Node<>(data);
+        this.setHead(initialNode);
+        this.setTail(initialNode);
+        this.setLength(1);
+    }
+
+    // data + code
+    // intended for use in 'MyHashMap'
+    public GenericQueue(T data, int code) {
+        Node<T> initialNode = new Node<>(data);
+        initialNode.code = code;
         this.setHead(initialNode);
         this.setTail(initialNode);
         this.setLength(1);
@@ -84,5 +96,35 @@ public class GenericQueue<T> extends GenericList<T> {
     // implemented for user ease-of-use
     public T dequeue() {
         return this.delete();
+    }
+
+
+    // returns the data from an element in the queue with a specified code
+    // returns null if element does not exist
+    public T searchForCode(int code) {
+        Node<T> currNode = this.getHead();
+        while (currNode != null) {
+            if (currNode.code == code) {
+                return currNode.data;
+            }
+            currNode = currNode.next;
+        }
+        return null;
+    }
+
+
+    // replaces the value at a node with the parameter 'code' with 'newData'
+    // returns the value previously stored in the node
+    public T replaceAtCode(T newData, int code) {
+        Node<T> currNode = this.getHead();
+        while (currNode != null) {
+            if (currNode.code == code) {
+                T oldData = currNode.data;
+                currNode.data = newData;
+                return oldData;
+            }
+            currNode = currNode.next;
+        }
+        return null;
     }
 }
